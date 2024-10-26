@@ -6,66 +6,73 @@ import "./styles/App.css";
 import toast, { Toaster } from 'react-hot-toast';
 
 const App = () => {
-    const [rows, setRows] = useState([]);
+    const [rows, setRows] = useState([]); 
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);
+    const [bookedSeats, setBookedSeats] = useState([]); // New state for booked seats
 
-    // Function to fetch the current seat map from the server
-    // const fetchSeatMap = async () => {
-    //     setLoading(true); // Set loading to true before fetching
-    //     try {
-    //         const response = await axios.get('http://localhost:3001/seats');
-    //         const seatData = response.data; 
-
-           
-    //         const seatMap = Array.from({ length: 12 }, () => Array(7).fill(null)); // 12 rows, 7 seats per row
-
-    //         seatData.forEach(seat => {
-    //             const { row, seat: seatNumber, booked } = seat;
-    //             if (booked) {
-    //                 seatMap[row - 1][seatNumber - 1] = 'Booked'; // Mark as booked
-    //             } else {
-    //                 seatMap[row - 1][seatNumber - 1] = null; // Mark as available
-    //             }
-    //         });
-
-    //         setRows(seatMap); 
-    //     } catch (error) {
-    //         console.error("Error fetching seat map:", error);
-    //         toast.error("Error fetching seat map");
-    //         setError("Failed to fetch seat data.");
-    //     } finally {
-    //         setLoading(false); 
-    //     }
-    // };
+    const fetchSeats = async () => {
+        try {
+            const response = await axios.get('http://localhost:3001/seats');
+            console.log('Fetched rows:', response.data); // Log fetched data
+            setRows(response.data); 
+        } catch (error) {
+            const errorMessage = error.response?.data || "Failed to fetch seat map.";
+            setError(errorMessage);
+            toast.error(errorMessage); // Show toast notification for errors
+        } finally {
+            setLoading(false); 
+        }
+    };
 
     useEffect(() => {
-        fetchSeatMap();
-    }, []);
+        fetchSeats(); 
+    }, []); // Fetch seats when the component mounts
 
-    const handleBookingSuccess = (data) => {
-        setRows((prevRows) => {
-            const newRows = [...prevRows];
-            data.seats.forEach(seat => {
-                newRows[seat.row - 1][seat.seat - 1] = data.username; 
-            });
-            return newRows;
-        });
+    const handleBookingSuccess = async (data) => {
+        toast.success("Seats booked successfully!"); // Notify that seats were booked
+        
+        // Update booked seats state
+        setBookedSeats(data.seats); // Assuming data.seats contains the booked seat info
+
+        await fetchSeats(); // Re-fetch the seat map to get the latest data
     };
 
     return (
-       <>
-             <div><Toaster/></div>
+        <>
+            <Toaster />
             <div className="main-div">
                 <h1>Train Ticket Booking System</h1>
-                {loading ? (
-                    <p>Loading seat map...</p>
-                ) : (
-                    <div className='secondary-div'>
-                        <div  className="booking-form"><BookingForm onBookingSuccess={handleBookingSuccess} /></div>
-                        <div className="seatmap"><SeatMap rows={rows} /></div> 
+                <div className='secondary-div'>
+                    <div className='secondary-primary'>
+                        <div className="booking-form">
+                            <BookingForm onBookingSuccess={handleBookingSuccess} />
+                        </div>
+                        <div className="booked-seats">
+                        <h2>Your Booked Seats</h2>
+                        {bookedSeats.length > 0 ? (
+                            <ul>
+                                {bookedSeats.map((seat, index) => (
+                                    <li key={index}>
+                                        Row {seat.row}, Seat {seat.seat}
+                                    </li>
+                                ))}
+                            </ul>
+                        ) : (
+                            <p>No seats booked yet.</p>
+                        )}
+                        </div>
                     </div>
-                )}
+                
+                    {loading ? (
+                        <p>Loading seat map...</p>
+                    ) : (
+                        <div className="seatmap">
+                            <SeatMap rows={rows} />
+                        </div>
+                    )}
+                </div>
+                {error && <p className="error-message">{error}</p>}
             </div>
         </>
     );

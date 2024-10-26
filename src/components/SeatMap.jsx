@@ -1,23 +1,22 @@
-// src/components/SeatMap.js
 import React from 'react';
+import "../styles/seatMap.css"; 
 
 const SeatMap = ({ rows }) => {
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <h2>Seat Availability</h2>
-            {rows.map((row, rowIndex) => (
-                <div key={rowIndex} style={{ margin: '5px' }}>
-                    Row {rowIndex + 1}: {row.map((seat, seatIndex) => (
-                        <span key={seatIndex} style={{
-                            padding: '10px',
-                            margin: '2px',
-                            backgroundColor: seat === null ? 'lightgreen' : 'lightcoral',
-                            borderRadius: '5px',
-                            color: seat === null ? 'black' : 'white'
-                        }}>
-                            {seat === null ? `S${seatIndex + 1}` : seat}
-                        </span>
-                    ))}
+        <div className="seat-map">
+            {Object.keys(rows).map(rowNumber => (
+                <div key={rowNumber} className="row">
+                    <h4>Row - {rowNumber}</h4>
+                    <div className="seats">
+                        {rows[rowNumber].map((seat, seatIndex) => (
+                            <div
+                                key={seatIndex}
+                                className={`seat ${seat.booked ? 'booked' : 'available'}`} 
+                            >
+                                <h1>{seatIndex}</h1>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             ))}
         </div>

@@ -1,56 +1,66 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 .main-div {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 20px;
   text-align: center;
+  padding: 20px;
 }
 
-.main-div h1 {
-  margin-bottom: 20px;
-  font-size: 2rem;
-  color: #333;
+.main-div h1{
+  padding: 2rem;
 }
 
 .secondary-div {
   display: flex;
-  gap: 5rem;
+  flex-direction: row;
+  justify-content: space-between;
   width: 100%;
   max-width: 800px;
-  justify-content: space-evenly;
 }
 
-.seatmap,
-.booking-form {
+.booking-form, .booking-summary {
   flex: 1;
-  padding: 15px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-@media (min-width: 768px) {
-  .secondary-div {
-      flex-direction: row;
-  }
-}
-
-
-@media (max-width: 767px) {
+/* Responsive for mobile */
+@media (max-width: 768px) {
   .secondary-div {
       flex-direction: column;
-      gap: 10px;
+      align-items: center;
   }
+}
+form{
+  display: flex;
+  gap: 0.5rem;
+}
 
-  .main-div h1 {
-      font-size: 1.5rem;
-  }
+.booked-seats {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: fit-content;
+}
+.second-primary{
+  display: flex;
+  gap : 1rem;
+  flex-direction: column;
+}
+
+.booked-seats h2 {
+  margin-bottom: 10px;
+}
+
+.booked-seats ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.booked-seats li {
+  padding: 5px;
+  background-color: #e0f7fa; /* Light cyan for better visibility */
+  margin: 5px 0;
+  border-radius: 3px;
 }

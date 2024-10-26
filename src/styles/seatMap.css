@@ -1,0 +1,41 @@
+.seat-map {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.row {
+    margin-bottom: 10px;
+    display: flex; /* Aligns row items in a horizontal line */
+}
+
+.seats {
+    display: flex;
+    margin-left:1rem;
+}
+.seats h1{
+    font-size: small;
+}
+.row h4{
+    margin:6px;
+}
+.seat {
+    width: 2rem; /* Set width for each seat */
+    height: 2rem; /* Set height for each seat */
+    border: 1px solid #000; /* Border for seat */
+    display: flex; /* Center content inside seat */
+    justify-content: center; 
+    align-items: center;
+    margin-right: 5px; /* Space between seats */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.booked {
+    background-color: red; /* Color for booked seats */
+    color: white; /* Text color for booked seats */
+}
+
+.available {
+    background-color: green; /* Color for available seats */
+    color: black; /* Text color for available seats */
+}
