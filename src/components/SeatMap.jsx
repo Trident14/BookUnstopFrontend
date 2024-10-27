@@ -13,7 +13,7 @@ const SeatMap = ({ rows }) => {
                                 key={seatIndex}
                                 className={`seat ${seat.booked ? 'booked' : 'available'}`} 
                             >
-                                <h1>{seatIndex}</h1>
+                                <h1>{seatIndex+1}</h1>
                             </div>
                         ))}
                     </div>
