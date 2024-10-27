@@ -33,9 +33,9 @@
 - The app's backend is hosted on Render’s free tier, which may require a few seconds to start if inactive. A popup modal is implemented to inform users to wait or refresh if the seat map takes time to load.
 
 ## Future Improvements
-- ** In-memory Caching: Use Redis for efficient seat availability checking.
-- ** User Authentication: Implement secure user login.
-- ** Concurrency Management: Allow concurrent seat booking while preventing double-booking.
-- ** Enhanced Booking Summary: Display detailed information for each booking.
+- **In-memory Caching**: Use Redis for efficient seat availability checking.
+- **User Authentication**: Implement secure user login.
+- **Concurrency Management**: Allow concurrent seat booking while preventing double-booking.
+- **Enhanced Booking Summary**: Display detailed information for each booking.
 
 
