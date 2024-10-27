@@ -11,7 +11,7 @@ const BookingForm = ({ onBookingSuccess }) => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:3001/api/book', {
+            const response = await axios.post('https://bookunstopbackend.onrender.com/api/book', {
                 username,
                 numberOfSeats: parseInt(numberOfSeats),
             });

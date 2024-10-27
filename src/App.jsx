@@ -13,7 +13,7 @@ const App = () => {
 
     const fetchSeats = async () => {
         try {
-            const response = await axios.get('http://localhost:3001/seats');
+            const response = await axios.get('https://bookunstopbackend.onrender.com/seats');
             console.log('Fetched rows:', response.data); // Log fetched data
             setRows(response.data); 
         } catch (error) {
