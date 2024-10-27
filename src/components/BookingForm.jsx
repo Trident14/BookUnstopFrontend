@@ -1,6 +1,5 @@
-// src/components/BookingForm.js
 import React, { useState } from 'react';
-import toast from 'react-hot-toast'; // Import react-hot-toast
+import toast from 'react-hot-toast'; 
 import axios from 'axios';
 import "../styles/BookingForm.css"
 

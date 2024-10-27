@@ -9,7 +9,7 @@ const App = () => {
     const [rows, setRows] = useState([]); 
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);
-    const [bookedSeats, setBookedSeats] = useState([]); // New state for booked seats
+    const [bookedSeats, setBookedSeats] = useState([]); 
 
     const fetchSeats = async () => {
         try {
@@ -30,12 +30,11 @@ const App = () => {
     }, []); // Fetch seats when the component mounts
 
     const handleBookingSuccess = async (data) => {
-        toast.success("Seats booked successfully!"); // Notify that seats were booked
-        
-        // Update booked seats state
-        setBookedSeats(data.seats); // Assuming data.seats contains the booked seat info
+        toast.success("Seats booked successfully!"); 
+       
+        setBookedSeats(data.seats); 
 
-        await fetchSeats(); // Re-fetch the seat map to get the latest data
+        await fetchSeats(); 
     };
 
     return (
