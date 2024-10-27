@@ -2,12 +2,7 @@
   margin: 0;
 
 }
-body{
-  background-image: url('./assets/bg.jpg'); 
-  background-size: cover; 
-  background-position: center; 
-  background-repeat: no-repeat; 
-}
+
 body {
   margin: auto;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
