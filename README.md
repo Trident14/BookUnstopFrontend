@@ -17,7 +17,6 @@
 ## Features
 
 - **User-friendly Booking Interface**: Book seats easily within the intuitive UI.
-- **Real-time Seat Availability**: See available and booked seats in real-time.
 - **Booking Summary**: Displays a summary of booked seats.
 - **Error Handling**: Provides helpful messages if issues occur, such as server timeout on the free-tier Render platform.
 - **Toast Notifications**: Success and error notifications using `react-hot-toast`.
@@ -34,9 +33,9 @@
 - The app's backend is hosted on Render’s free tier, which may require a few seconds to start if inactive. A popup modal is implemented to inform users to wait or refresh if the seat map takes time to load.
 
 ## Future Improvements
--- ** In-memory Caching: Use Redis for efficient seat availability checking.
--- ** User Authentication: Implement secure user login.
--- ** Concurrency Management: Allow concurrent seat booking while preventing double-booking.
--- ** Enhanced Booking Summary: Display detailed information for each booking.
+- ** In-memory Caching: Use Redis for efficient seat availability checking.
+- ** User Authentication: Implement secure user login.
+- ** Concurrency Management: Allow concurrent seat booking while preventing double-booking.
+- ** Enhanced Booking Summary: Display detailed information for each booking.
 
 
